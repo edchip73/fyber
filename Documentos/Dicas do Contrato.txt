@@ -1,0 +1,101 @@
+<p>Nome: {{ nome }}</p>
+<p>Endereço: {{ endereco }}</p>
+<p>Data de Nascimento: {{ data_nascimento }}</p>
+<!-- Adicione mais campos conforme necessário -->
+
+Crie um arquivo de template Twig para o contrato, por exemplo, contrato_template.twig. Use placeholders para os dados do cliente.
+
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\IOFactory;
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+
+class ClienteList extends Page
+{
+    // Outros métodos...
+
+    public function onContrato()
+    {
+        try {
+            Transaction::open('fyber'); // inicia transação com o BD
+            $repository = new Repository('Cliente');
+
+            // obtém os dados do formulário de buscas
+            $dados = $this->form->getData();
+
+            // cria um critério de seleção de dados
+            $criteria = new Criteria;
+            if ($dados->nome) {
+                // filtra pelo nome do cliente
+                $criteria->add('nome', 'like', "%{$dados->nome}%");
+            }
+
+            // carrega os clientes que satisfazem o critério
+            $clientes = $repository->load($criteria);
+
+            if ($clientes) {
+                foreach ($clientes as $cliente) {
+                    // transforma o objeto cliente em um array associativo
+                    $dados_cliente = (array) $cliente;
+
+                    // Configurar o Twig
+                    $loader = new FilesystemLoader('/caminho/para/templates');
+                    $twig = new Environment($loader);
+
+                    // Renderizar o template com os dados do cliente
+                    $template = $twig->load('contrato_template.twig');
+                    $conteudo = $template->render($dados_cliente);
+
+                    // Criar um novo documento Word
+                    $phpWord = new PhpWord();
+                    $section = $phpWord->addSection();
+                    \PhpOffice\PhpWord\Shared\Html::addHtml($section, $conteudo);
+
+                    // Salvar o documento Word
+                    $contrato_path = '/caminho/para/contrato_preenchido.docx';
+                    $pdf_path = '/caminho/para/contrato_final.pdf';
+
+                    $writer = IOFactory::createWriter($phpWord, 'Word2007');
+                    $writer->save($contrato_path);
+
+                    // Converter para PDF
+                    // Aqui você pode usar uma biblioteca adicional para converter de Word para PDF, como Dompdf
+                    // Para simplicidade, vamos salvar apenas o Word
+
+                    if (file_exists($contrato_path)) {
+                        // Força o download do arquivo Word
+                        header('Content-Description: File Transfer');
+                        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+                        header('Content-Disposition: attachment; filename="'.basename($contrato_path).'"');
+                        header('Expires: 0');
+                        header('Cache-Control: must-revalidate');
+                        header('Pragma: public');
+                        header('Content-Length: ' . filesize($contrato_path));
+                        readfile($contrato_path);
+                        exit;
+                    } else {
+                        throw new Exception("Erro ao gerar o contrato.");
+                    }
+                }
+            } else {
+                throw new Exception("Nenhum cliente encontrado.");
+            }
+
+            Transaction::close(); // finaliza a transação
+        } catch (Exception $e) {
+            Transaction::rollback(); // desfaz a transação em caso de erro
+            new Message('error', $e->getMessage());
+        }
+    }
+}
+
+Passo 3: Criar o Script PHP para Gerar o Documento Word
+Aqui está um exemplo de como usar Twig e PhpWord juntos para preencher os dados do cliente e gerar um documento Word:
+
+Resumo dos Passos
+Instalar Dependências: Use Composer para instalar phpword e twig.
+Criar Template Twig: Crie um template Twig para o contrato com placeholders.
+Script PHP para Gerar Documento Word: Use Twig para renderizar o conteúdo e PhpWord para gerar o documento Word.
+Este método utiliza Twig para renderizar o conteúdo do contrato e PhpWord para criar o documento Word com o conteúdo renderizado. Você pode ajustar conforme necessário, incluindo a conversão para PDF se necessário, usando bibliotecas adicionais como Dompdf.

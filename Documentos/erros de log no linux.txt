@@ -1,0 +1,11 @@
+DEBUG:root:Raw input: \{\"nome\":\"SAMPAIO \& DINIZ LTDA \",\"doc\":\"01.144.304\\/0003-57\",\"tel\":\"\(94\) 9255-1818\",\"email\":\"SAMPAIOMATRIZ@HOTMAIL.COM\",\"end\":\"FOLHA 27 QUADRA VINTE \",\"num\":\"21\",\"bairro\":\"NOVA MARABA>
+ERROR:root:Error in main: Expecting value: line 1 column 1 (char 0)
+DEBUG:root:Raw input: \{\"nome\":\"SAMPAIO \& DINIZ LTDA \",\"doc\":\"01.144.304\\/0003-57\",\"tel\":\"\(94\) 9255-1818\",\"email\":\"SAMPAIOMATRIZ@HOTMAIL.COM\",\"end\":\"FOLHA 27 QUADRA VINTE \",\"num\":\"21\",\"bairro\":\"NOVA MARABA>
+ERROR:root:Error in main: Expecting value: line 1 column 1 (char 0)
+DEBUG:root:Raw input: \{\"nome\":\"M.P. FERREIRA - PROMOES E VENDA DE SERVIOS PUBLICITARIOS\",\"doc\":\"28.423.013\\/0001-92\",\"tel\":\"\(94\) 9248-1002\",\"email\":\"QNOB@GMAIL.COM\",\"end\":\"FOLHA 32 QUADRA SETE LOTE 17 A\",\"num\":>
+ERROR:root:Error in main: Expecting value: line 1 column 1 (char 0)
+DEBUG:root:Raw input: \{\"nome\":\"M.P. FERREIRA - PROMOES E VENDA DE SERVIOS PUBLICITARIOS\",\"doc\":\"28.423.013\\/0001-92\",\"tel\":\"\(94\) 9248-1002\",\"email\":\"QNOB@GMAIL.COM\",\"end\":\"FOLHA 32 QUADRA SETE LOTE 17 A\",\"num\":>
+ERROR:root:Error in main: Expecting value: line 1 column 1 (char 0)
+
+DEBUG:root:Raw input: \{\"nome\":\"PV DE ANDRADE DISTRIBUIDORA E IMPORTADORA LTDA\",\"doc\":\"13.417.854\\/0002-09\",\"tel\":\"\(94\) 9265-7739\",\"email\":\"MARA@CASTROSCONTABILIDADE.COM\",\"end\":\"FOLHA 28 QUADRA TRINTA E OITO \",\"n>
+ERROR:root:Error in main: Expecting value: line 1 column 1 (char 0)

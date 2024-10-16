@@ -1,0 +1,8 @@
+create view view_tipo as
+select situacao.nome as 'tipo', sum(plano.valor) as 'valor'
+from venda
+join situacao on 
+venda.id_situacao = situacao.id
+join plano on 
+venda.id_plano = plano.id
+group by tipo

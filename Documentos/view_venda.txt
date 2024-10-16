@@ -1,0 +1,25 @@
+create view view_venda as
+select cliente.nome as 'Cliente', venda.data_vencimento as 'Vencimento', venda.data_pagamento as 'Pagamento',
+plano.nome as 'Plano', plano.valor as 'Valor', situacao.nome as 'Status'
+from venda
+   venda
+        JOIN cliente ON 
+        venda.id_cliente = cliente.id
+        JOIN plano ON
+        venda.id_plano = plano.id
+        JOIN situacao ON
+        venda.id_situacao = situacao.id	
+		
+		
+create view view_venda2 as
+select cliente.data_cadastro as 'Cadastro', cliente.nome as 'Cliente', venda.data_vencimento as 'Vencimento', venda.data_pagamento as 'Pagamento',
+plano.nome as 'Plano', plano.valor as 'Valor', situacao.nome as 'Status'
+from venda
+   venda
+        JOIN cliente ON 
+        venda.id_cliente = cliente.id
+        JOIN plano ON
+        venda.id_plano = plano.id
+        JOIN situacao ON
+        venda.id_situacao = situacao.id		
+		where situacao.nome='Pendente'

@@ -1,0 +1,21 @@
+create view view_cliente AS
+    SELECT 
+        cliente.data_cadastro AS 'data_cadastro',
+        cliente.nome AS 'cliente',
+        cliente.doc AS 'documento',
+        cliente.tel AS 'telefone',
+        plano.nome AS 'plano',
+        plano.valor AS 'valor',
+        venda.data_vencimento AS 'data_vencimento',
+        venda.data_pagamento AS 'data_pagamento',
+        situacao.nome AS 'situacao',
+        venda.boleto AS 'boleto'
+    FROM
+        venda
+        JOIN cliente ON 
+        venda.id_cliente = cliente.id
+        JOIN plano ON
+        venda.id_plano = plano.id
+        JOIN situacao ON
+        venda.id_situacao = situacao.id
+  order by situacao

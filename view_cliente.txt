@@ -1,0 +1,23 @@
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `radio_fyber`.`view_cliente` AS
+    SELECT 
+        `radio_fyber`.`cliente`.`data_cadastro` AS `data_cadastro`,
+        `radio_fyber`.`cliente`.`nome` AS `cliente`,
+        `radio_fyber`.`cliente`.`documento` AS `documento`,
+        `radio_fyber`.`cliente`.`telefone` AS `telefone`,
+        `radio_fyber`.`plano`.`nome` AS `plano`,
+        `radio_fyber`.`plano`.`valor` AS `valor`,
+        `radio_fyber`.`venda`.`data_vencimento` AS `data_vencimento`,
+        `radio_fyber`.`venda`.`data_pagamento` AS `data_pagamento`,
+        `radio_fyber`.`situacao`.`nome` AS `situacao`,
+        `radio_fyber`.`venda`.`boleto` AS `boleto`
+    FROM
+        (((`radio_fyber`.`venda`
+        JOIN `radio_fyber`.`cliente` ON ((`radio_fyber`.`venda`.`id_cliente` = `radio_fyber`.`cliente`.`id`)))
+        JOIN `radio_fyber`.`plano` ON ((`radio_fyber`.`venda`.`id_plano` = `radio_fyber`.`plano`.`id`)))
+        JOIN `radio_fyber`.`situacao` ON ((`radio_fyber`.`venda`.`id_situacao` = `radio_fyber`.`situacao`.`id`)))
+    WHERE
+        (`radio_fyber`.`situacao`.`nome` = 'Pago')

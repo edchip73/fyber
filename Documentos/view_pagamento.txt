@@ -1,0 +1,12 @@
+create view view_pagamento as
+SELECT 
+        venda.data_pagamento AS 'pagamento',
+        plano.valor AS 'valor',
+        venda.id_situacao AS 'situacao'
+    FROM
+        venda
+        JOIN plano ON 
+		venda.id_plano = plano.id
+    WHERE
+        venda.id_situacao = 1
+order by pagamento  

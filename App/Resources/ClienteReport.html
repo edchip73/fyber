@@ -1,0 +1,73 @@
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<table class="table table-bordered">
+    <tr class="tr1" bgcolor="#7A9BCB" style="color:white">
+        <td class="td1" align="center" colspan="10">
+           <p>Relatório de Clientes - Rádio Fyber</p>       
+        </td>
+    </tr>
+      <tr class="tr2" bgcolor="#C0C3E8">
+          <td class="td2" align="center">Data</td>
+          <td class="td2" align="center">Cliente</td>
+          <td class="td2" align="center">Documento</td>
+          <td class="td2" align="center">Telefone</td>
+          <td class="td2" align="center">Plano</td>
+          <td class="td2" align="center">Valor</td>
+          <td class="td2" align="center">Boleto</td>
+          <td class="td2" align="center">Vencimento</td>
+          <td class="td2" align="center">Situação</td>
+          <td class="td2" align="center">Pagamento</td>
+          
+      </tr>
+    {% for fybe in Fyber %}
+    <tr class="tr3">
+        <td class="td3" align="center"> {{fybe.data_cadastro}} </td>
+        <td class="td3" align="center"> {{fybe.cliente}} </td>
+        <td class="td3" align="center"> {{fybe.documento}} </td>
+        <td class="td3" align="center"> {{fybe.telefone}} </td>
+        <td class="td3" align="center"> {{fybe.plano}} </td>
+        <td class="td3" align="center">R$ {{fybe.valor|number_format(2, ',', '.')}} </td>
+        <td class="td3" align="center"> {{fybe.boleto}} </td>
+        <td class="td3" align="center"> {{fybe.data_vencimento}} </td>
+        <td class="td3" align="center"> {{fybe.situacao}} </td>
+        <td class="td3" align="center"> {{fybe.data_pagamento}} </td>
+        
+    </tr>
+   
+    {% endfor %}
+
+  </table>
+
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+           .table{
+            width: 100%;
+           } 
+           .tr1 .td1 p{
+            border: 1px solid #7A9BCB;
+            border-collapse: collapse;
+            text-align: center;
+            font-size:18px;
+        }
+          .tr2 .td2{
+           
+            border: 1px solid #C0C3E8;
+            border-collapse: collapse;
+            text-align: center;
+            font-size:14px;
+        }
+         .tr3 .td3{
+           
+            border: 1px solid #b9b9bc;
+            border-collapse: collapse;
+            text-align: center;
+            font-size:11px;
+        }
+         
+                 
+  </style>
+  </head>
+</html>

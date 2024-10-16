@@ -1,0 +1,62 @@
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<table class="table table-bordered" width="100%" style="border-collapse:collapse;border:1px solid #ddd">
+   
+        <tr class="tr1" bgcolor="#7A9BCB" style="color:white">
+            <td class="td1" align="center" colspan="6"><b>Relatório de Pendências | Rádio Fyber </b></td>
+        </tr>
+        <tr class="tr2" bgcolor="#C0C3E8">
+            <td class="td2" align="center">Cadastro</td>
+            <td class="td2" align="center">Cliente</td>
+            <td class="td2" align="center">Vencimento</td>
+            <td class="td2" align="center">Plano</td>
+            <td class="td2" align="center">Valor</td>
+            <td class="td2" align="center">Status</td>
+        </tr>
+       
+        {% for venda in vendas %}
+            <tr class="tr3">
+                <td class="td3" align="center">{{venda.Cadastro}}</td>
+                <td class="td3" align="left">{{venda.Cliente}}</td>
+                <td class="td3" align="center">{{venda.Vencimento}}</td>
+                <td class="td3" align="left">{{venda.Plano}}</td>
+                <td class="td3" align="center">R$ {{venda.Valor |number_format(2, ',', '.')}}</td>
+                <td class="td3" align="center">{{venda.Status}}</td>
+            </tr>
+            
+        {% endfor %}
+      
+   
+</table>
+
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+           .table{
+            width: 100%;
+           } 
+           .tr1 .td1 p{
+            border: 1px solid #7A9BCB;
+            border-collapse: collapse;
+            text-align: center;
+            font-size:20px;
+        }
+          .tr2 .td2{
+           
+            border: 1px solid #C0C3E8;
+            border-collapse: collapse;
+            text-align: center;
+            font-size:16px;
+        }
+         .tr3 .td3{
+           
+            border: 1px solid #b9b9bc;
+            border-collapse: collapse;
+           
+            font-size:14px;
+        }
+         
+                 
+  </style>

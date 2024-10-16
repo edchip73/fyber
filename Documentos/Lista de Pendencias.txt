@@ -1,0 +1,9 @@
+Corrigir na aplicação Fyber
+
+- Acrescentar campos na tabela Cliente
+- Obrigação de digitar campos, todos precisam ser preenchidos;
+- Mascara de CNPJ / CPF;
+- Corrigir relatório: Refazer a VIEW para buscar por ordem de PAGOS mas trazer PENDENTES;
+- Criar opção de BUSCAR relatório e GERAR por data (amarrar DATA_CADASTRO com DATA_PAGAMENTO) nova VIEW;
+- GERAR contrato a partir da escolha de um cliente: preenchendo campos no contrato e definir contador
+ para contrato e ver possibilidade de GRAVAR em nova tabela do banco: contrato essas informações dos campos;
